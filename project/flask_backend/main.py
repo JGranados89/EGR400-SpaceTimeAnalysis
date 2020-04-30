@@ -11,7 +11,7 @@ ENV = 'dev'
 if ENV == 'dev':
     app.debug = True
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:wed37dyy2410@localhost/space_time_app'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost:56908/space_time_app'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost:5432/space_time_app'
 else:
     app.debug = False
     app.config['SQLALCHEMY_DATABASE_URI'] = ''
@@ -23,7 +23,7 @@ db = SQLAlchemy(app)
 
 class Covid(db.Model):
     __tablename__ = 'covid'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer,primary_key=True)
     county = db.Column(db.String(50))
     province_state = db.Column(db.String(50))
     country = db.Column(db.String)

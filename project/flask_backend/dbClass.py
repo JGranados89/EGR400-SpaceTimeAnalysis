@@ -2,11 +2,12 @@ import psycopg2
 import pandas as pd
 from sqlalchemy import create_engine
 
+
 class Database():
 
     def __init__(self):
         # self.engine = create_engine('postgresql://postgres:wed37dyy2410@localhost/space_time_app', echo=False)
-        self.engine = create_engine('postgresql://postgres:password@localhost:56908/space_time_app', echo=False)
+        self.engine = create_engine('postgresql://postgres:password@localhost/space_time_app', echo=False)
         
         
         self.conn = psycopg2.connect(
@@ -19,7 +20,9 @@ class Database():
         self.cur = self.conn.cursor()    
 
     def insert_data(self):
-        df = pd.read_csv("../../../EGR400-SpaceTimeAnalysis/usa_covid_cases.csv")
+        df = pd.read_csv("usa_covid_cases.csv")
+        #df = pd.read_csv("../../../EGR400-SpaceTimeAnalysis/usa_covid_cases.csv")
+
         print(df.head())
         engine = self.engine
 
@@ -35,6 +38,3 @@ class Database():
         print('Printing results from covid database')
         print(result)
         return result
-
-
-
